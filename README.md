@@ -1,43 +1,46 @@
 <div align="center">
-  <img src="sprites/hamster_0000.png" width="128" alt="HiperChomik">
-  <h1>🐹 HiperChomik</h1>
-  <p><strong>Desktop hamster pet — transparente, interactivo, y hambriento</strong></p>
+  <img src="banner.jpeg" width="600" alt="HiperChomik Banner">
+  <br><br>
+  <h1>🐹 HIPERCHOMIK</h1>
+  <p><strong><em>El hámster digital más carismático del universo conocido (y del desconocido también)</em></strong></p>
   <p>
-    <img src="https://img.shields.io/badge/Rust-1.85+-orange?logo=rust" alt="Rust">
+    <img src="https://img.shields.io/badge/Rust-1.85%2B-orange?logo=rust" alt="Rust">
     <img src="https://img.shields.io/badge/Windows-10%2F11-blue?logo=windows" alt="Windows">
+    <img src="https://img.shields.io/badge/Estado-Legendario-brightgreen" alt="Estado">
     <img src="https://img.shields.io/github/v/release/CerebroCanibalus/HiperChomik" alt="Release">
   </p>
 </div>
 
 ---
 
-## 🎯 ¿Qué es?
+**Hola, soy Chomik.** Probablemente el hámster más avanzado tecnológicamente desde que inventaron la rueda. Vivo en tu escritorio. Floto. Juzgo tus archivos. Y si me los arrastras encima... me los como.
 
-Un hámster de escritorio que flota sobre tus ventanas. Se mueve, reacciona al ratón, detecta música y **come archivos** mandándolos a la Papelera de Reciclaje.
+No es brujería. Es **Rust**.
 
-Inspirado en Desktop Goose y Shimeji.
+## ✨ Por qué soy el mejor habitante de tu PC
 
-## ✨ Características
+- 🖼️ **Soy transparente** — literalmente. Canal alpha por pixel. Me veo bien sobre cualquier fondo. Hasta sobre tu wallpaper de anime vergonzoso.
+- 🖱️ **Me pongo tierno si me miras** — pasa el ratón por encima y empiezo a mendigar. No es patético. Es **estrategia de supervivencia**.
+- 🎵 **Bailo cuando hay música** — detecto tu audio en tiempo real (sí, hasta tus playlists de reggaetón triste). Si hay sonido, hay baile.
+- 🗑️ **Me como tus archivos** — arrastra archivos encima de mí. Los engullo y los mando directo a la Papelera de Reciclaje.*
+- 💥 **Tengo un modo turbo** — destrucción permanente y sin testigos. Pero te pregunto antes, no soy un monstruo.
+- 🚀 **Soy rápido** — no gasto ni 0.3 ms por frame en idle. Tu CPU ni se entera de que existo.
+- 📦 **Soy portable** — un solo `.exe` de ~6 MB. No necesito Node_modules, no necesito .NET, no necesito tus oraciones.
+- 🏃 **Arranco contigo** — me instalo y aparezco cada vez que enciendes tu PC. Como ese mueble que nunca usas pero siempre está ahí.
 
-- 🖼️ **Transparente** — per-pixel alpha, se ve sobre cualquier fondo
-- 🖱️ **Interactivo** — hover para que mendigue, drag para moverlo
-- 🎵 **Reacciona a la música** — baila cuando detecta audio activo
-- 🗑️ **Come archivos** — arrastra archivos encima y los manda a la papelera
-- 💥 **Turbo Eater** — borrado permanente (con confirmación)
-- 🖥️ **Arranque automático** — se inicia con Windows
-- 📦 **Sin dependencias** — portable, un solo .exe
+<sub>*Acepto archivos, carpetas, accesos directos, y esperanzas rotas.</sub>
 
-## 🚀 Instalación
+## 🚀 Instalación (para mortales)
 
-### Opción 1: MSI Installer (recomendado)
+### Opción 1: El MSI mágico (recomendado por mí)
 
-Descarga el `.msi` de la [página de releases](https://github.com/CerebroCanibalus/HiperChomik/releases) y ejecútalo.
+Bájate el `.msi` de [la página de releases](https://github.com/CerebroCanibalus/HiperChomik/releases). Dale doble click. Te aparezco al instante.
 
-- Instala en `%LOCALAPPDATA%\HiperChomik\`
-- Añade entrada de autostart en registro
-- Se lanza automáticamente al finalizar
+- Me instalo en `%LOCALAPPDATA%\HiperChomik\` (clase, no ensucio tu escritorio)
+- Me auto-agrego al inicio de Windows (con permiso tuyo, obvio)
+- Lanzo mi hermosa carita al terminar la instalación
 
-### Opción 2: Manual
+### Opción 2: Compílame tú mismo (para valientes)
 
 ```powershell
 git clone https://github.com/CerebroCanibalus/HiperChomik.git
@@ -47,56 +50,68 @@ Copy-Item sprites\* target\x86_64-pc-windows-gnu\release\sprites\
 .\target\x86_64-pc-windows-gnu\release\chomik-hamster.exe
 ```
 
-## 🎮 Cómo usar
+Si esto funciona a la primera, felicidades, eres mejor persona que yo.
 
-| Acción | Resultado |
-|--------|-----------|
-| **Mover ratón sobre el hámster** | Mendiga y te sigue con la mirada |
-| **Arrastrar archivo encima** | Abre la boca y lo come → Papelera |
-| **Click derecho** | Menú contextual |
-| **Reproducir música** | Empieza a bailar |
-| **Arrastrar ventana** | Mueve el hámster por la pantalla |
+## 🎮 Manual de uso (sí, necesitas leer esto)
 
-## 🛠️ Tecnologías
+| Acción | Qué pasa |
+|--------|----------|
+| **Pasar el ratón sobre mí** | Pongo cara de "comida... comida por favor" |
+| **Arrastrarme** | Me muevo. Como un hámster real pero sin patas traseras visibles. |
+| **Arrastrar archivo encima** | Abro la boca, hago *nom nom*, y tu archivo se va a la Papelera |
+| **Click derecho** | Menú con opciones secretas. Básicamente mi interfaz de configuración. |
+| **Poner música** | Me convierto en una discoteca ambulante. |
+| **Tener el escritorio vacío** | Me quedo quieto. Juzgándote en silencio. |
 
-- **Rust** — rendimiento nativo, ~6 MB, ~35 MB RAM
-- **GDI** — `UpdateLayeredWindow` para renderizado con canal alpha
-- **winit 0.30** — event loop eficiente (0.3 ms/frame en idle)
-- **Windows Core Audio** — detección de música via `IAudioMeterInformation`
-- **WiX Toolset** — instalador MSI
+## 🛠️ Tecnología (lo que me hace funcionar)
 
-## 📁 Estructura
+- **Rust** — porque el mundo merece cosas que no crasheen cada 3 segundos
+- **GDI** — `UpdateLayeredWindow` con per-pixel alpha. 0.3 ms por frame. Ni el hardware más pedorro sufre.
+- **winit 0.30** — event loop que no te quema la CPU. Ni una gota de Electron.
+- **Windows Core Audio** — `IAudioMeterInformation` vía raw COM vtable. Bailo con tu música sin pedir permiso.
+- **WiX Toolset** — mi empaque de instalación. MSI como Dios manda.
+- **Sprite count:** ~1620 frames de animación. Más arte que un museo.
+
+## 📁 Mis tripas (estructura del proyecto)
 
 ```
 HiperChomik/
 ├── src/
-│   ├── main.rs          # Entry point, event loop, window events
-│   ├── animation.rs     # State machine de animaciones
-│   ├── audio.rs         # Detección de audio (raw COM)
-│   ├── eater.rs         # File eater (papelera + turbo)
+│   ├── main.rs          # Donde todo empieza. Mi cerebro.
+│   ├── animation.rs     # State machine. Coreografía. Arte en movimiento.
+│   ├── audio.rs         # Mis orejas digitales. Raw COM vtable style.
+│   ├── eater.rs         # Mi estómago. Papelera + Turbo destructivo.
 │   └── renderer/
-│       ├── mod.rs       # GDI render wrapper
-│       └── gdi.rs       # UpdateLayeredWindow implementation
-├── sprites/             # ~1620 PNG frames (256×256 RGBA)
-├── installer/           # WiX MSI project
-├── anims.txt            # Definiciones de animaciones
-├── quotes.txt           # Mensajes para Turbo Eater
-└── build.bat            # Build + deploy script
+│       ├── mod.rs       # Abstracción. Mi piel bonita.
+│       └── gdi.rs       # GDI puro. Sin Direct2D, sin dramas.
+├── sprites/             # 1620 PNGs. Mi modelito.
+├── installer/           # WiX source. Pa que te instale bien.
+├── anims.txt            # Mi coreógrafo personal.
+├── quotes.txt           # Mis frases filosóficas cuando borro algo turbo.
+└── banner.jpeg          # Mi foto promocional. Guapo, lo sé.
 ```
 
 ## ⚙️ Configuración
 
-El menú contextual (click derecho) permite:
+Click derecho sobre mí → menú contextual:
 
-- **Trash Enabled** — activar/desactivar modo papelera
-- **Turbo Eater** — borrado permanente (sin papelera)
-- **Start with Windows** — autostart toggle
+- **Trash Enabled** 🗑️ — modo normal: los archivos van a la Papelera
+- **Turbo Eater** 💥 — destrucción absoluta. No vuelven. Lo confirmas con una frase random de `quotes.txt`
+- **Start with Windows** 🏃 — decido vivir en tu PC permanentemente
 
-## 🐛 Bugs conocidos
+## 🐛 Lo que todavía no hago bien
 
-- El hámster flota en su lugar (sin desplazamiento automático)
-- Sin integración de escritorio (detrás de iconos tipo DesktopGoose)
+- No camino. Floto. Como un globo con forma de hámster.
+- No me meto detrás de los iconos del escritorio. Todavía. (Estilo DesktopGoose, algún día...)
+- A veces el menú contextual se esconde si mueves el ratón muy rápido. Es timidez.
 
 ## 📜 Licencia
 
-MIT
+MIT — haz lo que quieras con mi código. Pero si lo mejoras, mándame un PR, ¿no?
+
+---
+
+<div align="center">
+  <img src="sprites/hamster_0000.png" width="64" alt="Chomik">
+  <p><em>"Soy Chomik. Estoy en tu escritorio. Cómprame una semilla."</em></p>
+</div>

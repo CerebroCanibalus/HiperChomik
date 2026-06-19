@@ -1,0 +1,14 @@
+[package]
+name = "chomik-hamster"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+winit = "0.30"
+image = { version = "0.25", default-features = false, features = ["png"] }
+windows = { version = "0.58", features = [
+    "Win32_Media_Audio",
+    "Win32_System_Com",
+    "Win32_Foundation",
+] }
+

@@ -1,0 +1,12 @@
+target/
+.cargo/
+*.exe
+*.pdb
+*.msi
+*.wixpdb
+*.wixmsp
+*.wixmst
+*.cab
+*.wixout
+*.log
+audio_debug.log

@@ -10,6 +10,8 @@ $wxs = @"
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
 
     <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
+    <WixVariable Id="WixUIBannerBmp" Value="banner_top.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="banner_bg.bmp" />
 
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Ejecutar HiperChomik al finalizar" />

@@ -5,7 +5,8 @@ $out = "$root\installer"
 $env:Path += ";$wixBin"
 Set-Location $out
 
-# Generate WXS files
+# Generate WXS files and banners
+& "$out\gen_banner.ps1"
 & "$out\gen_mainwxs.ps1"
 & "$out\gen_sprites.ps1"
 

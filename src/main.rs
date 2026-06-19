@@ -22,6 +22,8 @@ use winit::event_loop::{ActiveEventLoop, ControlFlow, EventLoop};
 use winit::window::{Window, WindowAttributes, WindowId};
 use winit::raw_window_handle::{HasWindowHandle, RawWindowHandle};
 
+const ERROR_ALREADY_EXISTS: u32 = 183;
+
 // ── Win32 FFI ─────────────────────────────────────
 pub(crate) mod ffi {
     use std::ffi::c_void;
@@ -161,6 +163,8 @@ pub(crate) mod ffi {
         pub fn Shell_NotifyIconW(dwMessage: u32, lpData: *const NOTIFYICONDATAW) -> i32;
         pub fn LoadImageW(hInst: HANDLE, lpName: *const u16, uType: u32, cx: i32, cy: i32, fuLoad: u32) -> HANDLE;
         pub fn DestroyIcon(hIcon: HANDLE) -> i32;
+        pub fn CreateMutexW(lpMutexAttributes: *mut std::ffi::c_void, bInitialOwner: i32, lpName: *const u16) -> HANDLE;
+        pub fn GetLastError() -> u32;
         pub fn RegisterClassW(lpWndClass: *const WNDCLASSW) -> u16;
         pub fn CreateWindowExW(dwExStyle: u32, lpClassName: *const u16, lpWindowName: *const u16, dwStyle: u32, X: i32, Y: i32, nWidth: i32, nHeight: i32, hWndParent: HWND, hMenu: HMENU, hInstance: HANDLE, lpParam: *mut std::ffi::c_void) -> HWND;
         pub fn DestroyWindow(hWnd: HWND) -> i32;
@@ -501,12 +505,17 @@ fn load_tray_icon() -> ffi::HANDLE {
     unsafe {
         if let Ok(exe) = std::env::current_exe() {
             if let Some(dir) = exe.parent() {
-                let ico_path = dir.join("chomik_icon.ico");
-                let path16: Vec<u16> = ico_path.to_string_lossy().encode_utf16()
-                    .chain(std::iter::once(0)).collect();
-                let h = ffi::LoadImageW(std::ptr::null_mut(), path16.as_ptr(),
-                    ffi::IMAGE_ICON, 32, 32, ffi::LR_LOADFROMFILE);
-                if !h.is_null() { return h; }
+                let paths = [
+                    dir.join("chomik_icon.ico"),
+                    dir.join("sprites").join("chomik_icon.ico"),
+                ];
+                for p in &paths {
+                    let path16: Vec<u16> = p.to_string_lossy().encode_utf16()
+                        .chain(std::iter::once(0)).collect();
+                    let h = ffi::LoadImageW(std::ptr::null_mut(), path16.as_ptr(),
+                        ffi::IMAGE_ICON, 0, 0, ffi::LR_LOADFROMFILE);
+                    if !h.is_null() { return h; }
+                }
             }
         }
         ffi::LoadImageW(std::ptr::null_mut(), 32512 as *const u16,
@@ -961,6 +970,13 @@ impl ApplicationHandler for App {
 }
 
 fn main() {
+    unsafe {
+        let name: Vec<u16> = "HiperChomik_SingleInstance\0".encode_utf16().collect();
+        ffi::CreateMutexW(std::ptr::null_mut(), 1, name.as_ptr());
+        if ffi::GetLastError() == ERROR_ALREADY_EXISTS {
+            return;
+        }
+    }
     let el = EventLoop::new().unwrap();
     el.set_control_flow(ControlFlow::Wait);
     el.run_app(&mut App::new()).unwrap();

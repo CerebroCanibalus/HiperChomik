@@ -5,6 +5,15 @@ $wxs = @"
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product Id="*" Name="HiperChomik" Language="1033" Version="1.0.0.0" Manufacturer="CerebroCanibalus" UpgradeCode="F1A2B3C4-D5E6-7890-ABCD-EF1234567890">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
+
+    <UIRef Id="WixUI_InstallDir" />
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+
+    <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
+
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Ejecutar HiperChomik al finalizar" />
+
     <Media Id="1" Cabinet="HiperChomik.cab" EmbedCab="yes" />
 
     <Directory Id="TARGETDIR" Name="SourceDir">
@@ -30,19 +39,26 @@ $wxs = @"
               <RegistryValue Root="HKCU" Key="Software\HiperChomik" Name="SpritesDirInstalled" Type="integer" Value="1" KeyPath="yes" />
             </Component>
           </Directory>
+          <Component Id="CleanInstallDir" Guid="E5F6A7B8-C9D0-1234-EFAB-345678901234">
+            <RemoveFolder Id="RemoveInstallDir" On="uninstall" />
+            <RegistryValue Root="HKCU" Key="Software\HiperChomik" Name="InstallDirClean" Type="integer" Value="1" KeyPath="yes" />
+          </Component>
+          <Component Id="AutoStart" Guid="F6A7B8C9-D0E1-2345-ABCD-456789012345">
+            <RegistryValue Root="HKCU" Key="Software\Microsoft\Windows\CurrentVersion\Run" Name="HiperChomik" Type="string" Value="[INSTALLDIR]chomik-hamster.exe" KeyPath="yes" />
+          </Component>
+        </Directory>
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="StartMenuDir" Name="HiperChomik">
+          <Component Id="StartMenuShortcut" Guid="A1B2C3D4-E5F6-7890-ABCD-EF1234567891">
+            <Shortcut Id="StartMenuChomik" Name="HiperChomik" Description="HiperChomik - Desktop Hamster Pet" Target="[INSTALLDIR]chomik-hamster.exe" WorkingDirectory="INSTALLDIR" />
+            <Shortcut Id="UninstallShortcut" Name="Uninstall HiperChomik" Description="Remove HiperChomik" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]" />
+            <RemoveFolder Id="RemoveStartMenuDir" On="uninstall" />
+            <RegistryValue Root="HKCU" Key="Software\HiperChomik" Name="StartMenuShortcut" Type="integer" Value="1" KeyPath="yes" />
+          </Component>
         </Directory>
       </Directory>
     </Directory>
-
-    <DirectoryRef Id="INSTALLDIR">
-      <Component Id="CleanInstallDir" Guid="E5F6A7B8-C9D0-1234-EFAB-345678901234">
-        <RemoveFolder Id="RemoveInstallDir" On="uninstall" />
-        <RegistryValue Root="HKCU" Key="Software\HiperChomik" Name="InstallDirClean" Type="integer" Value="1" KeyPath="yes" />
-      </Component>
-      <Component Id="AutoStart" Guid="F6A7B8C9-D0E1-2345-ABCD-456789012345">
-        <RegistryValue Root="HKCU" Key="Software\Microsoft\Windows\CurrentVersion\Run" Name="HiperChomik" Type="string" Value="[INSTALLDIR]chomik-hamster.exe" KeyPath="yes" />
-      </Component>
-    </DirectoryRef>
 
     <Feature Id="ProductFeature" Title="HiperChomik" Level="1">
       <ComponentRef Id="MainExe" />
@@ -51,19 +67,19 @@ $wxs = @"
       <ComponentRef Id="SpritesDirComp" />
       <ComponentRef Id="AutoStart" />
       <ComponentRef Id="CleanInstallDir" />
+      <ComponentRef Id="StartMenuShortcut" />
       <ComponentGroupRef Id="SpritesComponentGroup" />
     </Feature>
+
+    <CustomAction Id="LaunchApp" Directory="INSTALLDIR" ExeCommand="[INSTALLDIR]chomik-hamster.exe" Return="asyncNoWait" />
+    <UI>
+      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApp">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1</Publish>
+    </UI>
 
     <Icon Id="AppIcon" SourceFile="$root\sprites\chomik_icon.ico" />
     <Property Id="ARPPRODUCTICON" Value="AppIcon" />
     <Property Id="ARPHELPLINK" Value="https://github.com/CerebroCanibalus/HiperChomik" />
-    <Property Id="ARPNOREPAIR" Value="1" />
-    <Property Id="ARPNOMODIFY" Value="1" />
 
-    <CustomAction Id="LaunchApp" Directory="INSTALLDIR" ExeCommand="[INSTALLDIR]chomik-hamster.exe" Return="asyncNoWait" />
-    <InstallExecuteSequence>
-      <Custom Action="LaunchApp" After="InstallFinalize">NOT Installed</Custom>
-    </InstallExecuteSequence>
   </Product>
 </Wix>
 "@

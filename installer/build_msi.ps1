@@ -17,7 +17,7 @@ if ($LASTEXITCODE -ne 0) { exit 1 }
 if ($LASTEXITCODE -ne 0) { exit 1 }
 
 # Link
-& light -nologo -cultures:null -sw1076 "$out\HiperChomik.wixobj" "$out\sprites.wixobj" -out "$out\HiperChomik.msi" 2>&1
+& light -nologo -cultures:null -sw1076 -ext WixUIExtension "$out\HiperChomik.wixobj" "$out\sprites.wixobj" -out "$out\HiperChomik.msi" 2>&1
 if ($LASTEXITCODE -eq 0) {
   Write-Host "MSI created: $out\HiperChomik.msi" -ForegroundColor Green
   Get-Item "$out\HiperChomik.msi" | Select-Object Length

@@ -52,6 +52,17 @@ Copy-Item sprites\* target\x86_64-pc-windows-gnu\release\sprites\
 
 Si esto funciona a la primera, felicidades, eres mejor persona que yo.
 
+### ⚠️ Windows SmartScreen
+
+La primera vez que intentes instalar, Windows puede quejarse de que no confía en mí. Es normal — no tengo firma digital porque cuestan como 300€ al año y soy un hámster, no una multinacional.
+
+Para saltarte el aviso:
+1. Cuando salga **"Windows protegió tu PC"**, haz click en **"Más información"**
+2. Luego click en **"Ejecutar de todas formas"**
+3. Disfruta de mi hermosa carita
+
+Si prefieres no confiar en un .exe random de internet (comprensible), puedes compilarme desde el código fuente tú mismo. Las instrucciones están ahí arriba.
+
 ## 🎮 Manual de uso (sí, necesitas leer esto)
 
 | Acción | Qué pasa |

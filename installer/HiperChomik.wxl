@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="es-mx" Codepage="65001" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+  <String Id="WelcomeDlgTitle">{\WixUI_Font_Title}Ñoooo, bienvenido al instalador mamalón de [ProductName]</String>
+  <String Id="WelcomeDlgDescription">{\WixUI_Font_Normal}Este asistente te va a instalar [ProductName] en tu mugroso PC. Dale a Siguiente si no eres un cobarde, o a Cancelar si prefieres seguir con tu vida vacía.</String>
+
+  <String Id="InstallDirDlgTitle">{\WixUI_Font_Title}¿Dónde chingados lo pongo?</String>
+  <String Id="InstallDirDlgDescription">{\WixUI_Font_Normal}Pon la ruta donde quieres tener al hámster. Si no sabes cuál es, no toques nada, total el default está bien.</String>
+  <String Id="BrowseDlgTitle">{\WixUI_Font_Title}Anda, explorando carpetas como un hacker</String>
+  <String Id="BrowseDlgDescription">{\WixUI_Font_Normal}Navega a la carpeta donde quieres que viva el Chomik. No rompas nada.</String>
+
+  <String Id="VerifyReadyDlgTitle">{\WixUI_Font_Title}Listón, ya mero instalamos</String>
+  <String Id="VerifyReadyDlgDescription">{\WixUI_Font_Normal}Todo está listo para poner este cagadero en tu PC. Dale a Instalar si estás seguro, o a Atrás si te dio miedito.</String>
+  <String Id="VerifyReadyDlgInstallTitle">{\WixUI_Font_Title}Listón, ya mero instalamos</String>
+  <String Id="VerifyReadyDlgInstallText">{\WixUI_Font_Normal}Dale clic a Instalar y que comience el show.</String>
+
+  <String Id="ExitDialogTitle">{\WixUI_Font_Title}¡Instalación completada, perro!</String>
+  <String Id="ExitDialogDescription">{\WixUI_Font_Normal}[ProductName] ya está en tu PC. No olvides marcar la cajita esa si quieres que el Chomik salga a saludarte apenas cierres esto.</String>
+  <String Id="ExitDialogOptionsText">{\WixUI_Font_Normal}Opciones bien chingonas:</String>
+  <String Id="ExitDialogOptionInstall">{\WixUI_Font_Normal}Lanzar al hámster al escritorio para que haga de las suyas</String>
+  <String Id="ExitDialogOptionFinishText">{\WixUI_Font_Normal}Dale a Finalizar y ve a conocer a tu nuevo compa de escritorio.</String>
+
+  <String Id="MaintenanceWelcomeDlgTitle">{\WixUI_Font_Title}Otra vez tú, ¿qué pedo?</String>
+  <String Id="MaintenanceWelcomeDlgDescription">{\WixUI_Font_Normal}¿Quieres reparar, cambiar o borrar a [ProductName]? Sea lo que sea, aquí estamos para eso.</String>
+
+  <String Id="ResumeDlgTitle">{\WixUI_Font_Title}Sigamos con esto</String>
+
+  <String Id="ProgressDlgTitleInstalling">{\WixUI_Font_Title}Poniendo todo en su lugar...</String>
+  <String Id="ProgressDlgTitleChanging">{\WixUI_Font_Title}Cambiando cositas...</String>
+  <String Id="ProgressDlgTitleRepairing">{\WixUI_Font_Title}Reparando el desmadre...</String>
+  <String Id="ProgressDlgTitleRemoving">{\WixUI_Font_Title}Sacando al hámster de tu PC... :(</String>
+
+  <String Id="DiskCostDlgTitle">{\WixUI_Font_Title}Espacio en el disco duro, wey</String>
+  <String Id="DiskCostDlgDescription">{\WixUI_Font_Normal}Asegúrate de que tienes espacio para el Chomik. No es mucho, pero en estos tiempos de hambre nunca sobra.</String>
+
+  <String Id="WixUIBack">Atrás</String>
+  <String Id="WixUINext">Siguiente →</String>
+  <String Id="WixUICancel">Cancelar</String>
+  <String Id="WixUIInstall">Instalar</String>
+  <String Id="WixUIRemove">Desinstalar</String>
+  <String Id="WixUIRepair">Reparar</String>
+  <String Id="WixUIFinish">Finalizar</String>
+  <String Id="WixUIBrowse">Examinar...</String>
+  <String Id="WixUIOK">Aceptar</String>
+  <String Id="WixUIYes">Sí</String>
+  <String Id="WixUINo">No</String>
+
+  <String Id="InstallScopeDlgTitle">{\WixUI_Font_Title}¿Para quién lo instalas, mijo?</String>
+  <String Id="InstallScopeDlgDescription">{\WixUI_Font_Normal}Elige si el Chomik es solo para ti o para todos los que usen esta computadora. Spoiler: per-user es más seguro.</String>
+</WixLocalization>

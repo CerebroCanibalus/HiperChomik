@@ -5,22 +5,31 @@ $out = "D:\Mis Juegos\HyperChomik\chomik-hamster\installer"
 
 $img = [System.Drawing.Image]::FromFile($banner)
 
-# Top banner 493x58
-$top = New-Object System.Drawing.Bitmap(493, 58)
-$g = [System.Drawing.Graphics]::FromImage($top)
-$g.DrawImage($img, 0, 0, 493, 58)
-$g.Dispose()
-$top.Save("$out\banner_top.bmp", [System.Drawing.Imaging.ImageFormat]::Bmp)
-$top.Dispose()
-Write-Host "Top banner: $((Get-Item "$out\banner_top.bmp").Length / 1KB) KB"
+function Make-Banner {
+  param([int]$w, [int]$h, [string]$path, [float]$fontSize)
+  $bmp = New-Object System.Drawing.Bitmap($w, $h)
+  $g = [System.Drawing.Graphics]::FromImage($bmp)
+  $g.DrawImage($img, 0, 0, $w, $h)
+  $font = New-Object System.Drawing.Font("Arial Black", $fontSize, [System.Drawing.FontStyle]::Bold)
+  $brush = New-Object System.Drawing.SolidBrush([System.Drawing.Color]::White)
+  $fmt = New-Object System.Drawing.StringFormat
+  $fmt.Alignment = [System.Drawing.StringAlignment]::Center
+  $fmt.LineAlignment = [System.Drawing.StringAlignment]::Center
+  $rx = [float]($w * 0.45)
+  $ry = [float]($h * 0.50)
+  $rw = [float]($w * 0.50)
+  $rh = [float]($h * 0.45)
+  $rect = New-Object System.Drawing.RectangleF($rx, $ry, $rw, $rh)
+  $g.DrawString("HiperChomik", $font, $brush, $rect, $fmt)
+  $font.Dispose()
+  $brush.Dispose()
+  $fmt.Dispose()
+  $g.Dispose()
+  $bmp.Save($path, [System.Drawing.Imaging.ImageFormat]::Bmp)
+  $bmp.Dispose()
+}
 
-# Dialog bg 493x312
-$bg = New-Object System.Drawing.Bitmap(493, 312)
-$g = [System.Drawing.Graphics]::FromImage($bg)
-$g.DrawImage($img, 0, 0, 493, 312)
-$g.Dispose()
-$bg.Save("$out\banner_bg.bmp", [System.Drawing.Imaging.ImageFormat]::Bmp)
-$bg.Dispose()
-Write-Host "BG banner: $((Get-Item "$out\banner_bg.bmp").Length / 1KB) KB"
-
+Make-Banner 493 58 "$out\banner_top.bmp" 20
+Make-Banner 493 312 "$out\banner_bg.bmp" 36
 $img.Dispose()
+Write-Host "Banners regenerated with white text"
